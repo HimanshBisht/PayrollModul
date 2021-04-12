@@ -1,0 +1,308 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="SalaryMaster.master.cs" Inherits="SalaryMaster" %>
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp1" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+
+    <link rel='stylesheet' type='text/css' href="../css/styles.css" />
+    <link href="../css/div.css" rel="stylesheet" type="text/css" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>K.R. MANGALAM PAYROLL</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link type="text/css" href="../css/common.css" rel="stylesheet" />
+
+    <style type="text/css">
+        body {
+            margin-left: 0px;
+            margin-top: 0px;
+            margin-right: 0px;
+            margin-bottom: 0px;
+            background-color: #fff;
+        }
+
+        #cssmenu .has-sub ul li a {
+            padding: 15px !Important;
+            background-color: #f1f1f1 !Important;
+            color: #000 !Important;
+            font-family: unset !Important;
+        }
+
+            #cssmenu .has-sub ul li a:hover:not(.active) {
+                background-color: #555 !Important;
+                color: white !Important;
+            }
+    </style>
+
+    <script type="text/javascript" language="javascript">
+
+        function DisableBackButton() {
+            window.history.forward()
+        }
+        DisableBackButton();
+        window.onload = DisableBackButton;
+        window.onpageshow = function (evt) { if (evt.persisted) DisableBackButton() }
+        window.onunload = function () { void (0) }
+    </script>
+
+</head>
+<body oncontextmenu="return true">
+    <form id="form1" runat="server">
+
+        <div class="main">
+            <!--Starting of Header-->
+            <div class="main_1">
+                <div class="header" style="text-align: Left">
+                    <img src="../Images/Payroll-Logo.jpeg" width="130px" alt="logo" />
+                    <asp:Label ID="Lblheader" runat="server" Text="test" Visible="false" Font-Bold="true" Font-Size="XX-Large"></asp:Label>
+                </div>
+                <div class="header_right">
+                    <div class="header_right_0">
+                        Helpline No: 011-30133013
+                    </div>
+                    <div class="header_right_1">
+                        Mail Us: <a href="mailto:tech@krmangalam.com" style="color: White">tech@krmangalam.com</a>
+                    </div>
+                    <div style="margin-top: 10px; margin-left: 250px; font-size: medium">
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: -20px;">
+                <asp:ScriptManager ID="ScriptManager1" runat="server">
+                </asp:ScriptManager>
+                <asp:UpdatePanel runat="server" ID="testupdatepanel">
+                    <ContentTemplate>
+                        <table>
+                            <tr>
+                                <td>
+                                    <asp:Label ID="lblUser" runat="server" Font-Size="15px" Font-Bold="true" ForeColor="Red"></asp:Label>
+                                    <asp:LinkButton ID="lnklogout" runat="server" Font-Size="15px" Style="margin-left: 200px;" Font-Bold="true" Text="LogOut"
+                                        OnClick="lnklogout_Click"></asp:LinkButton>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <asp:Label ID="lblLastLogin" runat="server" Font-Size="15px" Font-Bold="true" ForeColor="Red"></asp:Label>
+                                </td>
+                            </tr>
+                        </table>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+            </div>
+            <!--end of Header-->
+
+
+            <!--Starting of Menu-->
+            <div class="main_2">
+                <div id='cssmenu'>
+                    <ul>
+                        <li class='active'><a href="../Home/Home.aspx"><span>Home</span></a></li>
+                        <li id="liSetUp" runat="server" class='has-sub'><a href='#'>Set up »<span class="style_1"></span></a>
+                            <ul>
+                                <li id="liBasicSetUp" runat="server" class='has-sub'><a href='#'>Basic Set Up »<span class="style_1"></span></a>
+                                    <ul>
+                                        <li id="liAppointmentSetup" runat="server" class='has-sub'><a href="../SetUp/AppointmentSetup.aspx"><span>Appointment Type Set up</span></a></li>
+                                        <li id="liBankSetup" runat="server" class='has-sub'><a href="../SetUp/BankSetup.aspx"><span>Bank Set up</span></a></li>
+                                        <li id="liDesignationSetup" runat="server" class='has-sub'><a href="../SetUp/DesignationSetup.aspx"><span>Designation Set up</span></a></li>
+                                        <li id="liEmpNatureSetup" runat="server" class='has-sub'><a href="../SetUp/EmpNatureSetup.aspx"><span>Employee Nature Set up</span></a></li>
+                                        <li id="liStaffTypeSetup" runat="server" class='has-sub'><a href="../SetUp/StaffTypeSetup.aspx"><span>Staff Type Set up</span></a></li>
+                                        <li id="liSubjectsSetup" runat="server" class='has-sub'><a href="../SetUp/SubjectsSetup.aspx"><span>Subjects Set up</span></a></li>
+                                        <li id="liAssignNoticeDays" runat="server" class='has-sub'><a href="../SetUp/AssignNoticeDays.aspx"><span>Assign Offically Notice</span></a></li>
+                                        <li id="liYearSetup" runat="server" class='has-sub'><a href="../SetUp/YearSetup.aspx"><span>Year Set up</span></a></li>
+                                        <li id="liMakeUser" runat="server" class='has-sub'><a href="../SetUp/MakeUser.aspx"><span>Make User</span></a></li>
+                                        <li id="liChangePassword" runat="server" class='has-sub'><a href="../SetUp/ChangePassword.aspx"><span>Change Password</span></a></li>
+                                    </ul>
+                                </li>
+                                <li id="liAllowanceSetUp" runat="server" class='has-sub'><a href='#'>Allowance Set Up »<span class="style_1"></span></a>
+                                    <ul>
+                                        <li id="liDaSetup" runat="server" class='has-sub'><a href="../SetUp/DaSetup.aspx"><span>DA Set up</span></a></li>
+                                        <li id="liHraSetUp" runat="server" class='has-sub'><a href="../SetUp/HraSetUp.aspx"><span>HRA Set up</span></a></li>
+                                        <li id="liMedicalSetup" runat="server" class='has-sub'><a href="../SetUp/MedicalSetup.aspx"><span>Medical Set up</span></a></li>
+                                        <li id="liTransportSetUp" runat="server" class='has-sub'><a href="../SetUp/TransportSetUp.aspx"><span>Transport Set up</span></a></li>
+                                    </ul>
+                                </li>
+                                <li id="liDeductionsSetUp" runat="server" class='has-sub'><a href='#'>Deductions Set Up »<span class="style_1"></span></a>
+                                    <ul>
+                                        <li id="liPFSetup" runat="server" class='has-sub'><a href="../SetUp/PFSetup.aspx"><span>PF Set up</span></a></li>
+                                        <li id="liESISetup" runat="server" class='has-sub'><a href="../SetUp/ESISetup.aspx"><span>ESI Set up</span></a></li>
+                                        <%--<li id="liGISSetup" runat="server" class='has-sub'><a href="../SetUp/GISSetup.aspx"><span>GIS Set up</span></a></li>--%>
+                                        <li id="liTransportRecoverySetUp" runat="server" class='has-sub'><a href="../SetUp/TransportRecoverySetUp.aspx"><span>Transport Recovery Set up</span></a></li>
+
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li id="liImportData" runat="server" class='has-sub'><a href='#'>Import Data »<span class="style_1"></span></a>
+                            <ul>
+                                <%--<li id="liImportArrear" runat="server" class='has-sub'><a href="../ImportData/ImportArear.aspx"><span>Import Arrear</span></a></li>--%>
+                                <li id="liImportPaidDays" runat="server" class='has-sub'><a href="../ImportData/ImportPaidDays.aspx"><span>Import Paid Days</span></a></li>
+                                <li id="liImportTDS" runat="server" class='has-sub'><a href="../ImportData/ImportTDS.aspx"><span>Import TDS</span></a></li>
+                                <li id="liImportIDF" runat="server" class='has-sub'><a href="../ImportData/ImportIDF.aspx"><span>Import IDF</span></a></li>
+                                <li id="liImportBasicScale" runat="server" class='has-sub'><a href="../ImportData/ImportBasicScale.aspx"><span>Import Basic Scale</span></a></li>
+                                <%--<li id="liImportProfile" runat="server" class='has-sub'><a href="../ImportData/ImportProfile.aspx"><span>Import Emp Profile</span></a></li>--%>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li id="liActions" runat="server" class='has-sub'><a href='#'>Actions »<span class="style_1"></span></a>
+                            <ul>
+                                <li id="liProfileMenu" runat="server" class='has-sub'><a href='#'>Profile »<span class="style_1"></span></a>
+                                    <ul>
+                                        <li id="liEmpSalaryProfile" runat="server" class='has-sub'><a href="../Actions/EmpSalaryProfile.aspx"><span>Employee Profile</span></a></li>
+                                        <li id="liUpdateEmpProfile" runat="server" class='has-sub'><a href="../Actions/UpdateEmpProfile.aspx"><span>Update Employee Profile</span></a></li>
+                                    </ul>
+                                </li>
+                                <li id="liOtherAdjustments" runat="server" class='has-sub'><a href='#'>Other Adjustment's »<span class="style_1"></span></a>
+                                    <ul>
+                                        <li id="liAdvanceMaking" runat="server" class='has-sub'><a href="../Actions/AdvanceMaking.aspx"><span>Advance Making</span></a></li>
+                                        <li id="liCalculateArrear" runat="server" class='has-sub'><a href="../Actions/CalculateArrear.aspx"><span>Arrear Making</span></a></li>
+                                        <li id="liCalculateRecovery" runat="server" class='has-sub'><a href="../Actions/CalculateRecovery.aspx"><span>Recovery Making</span></a></li>
+                                        <li id="liReimbursementMaking" runat="server" class='has-sub'><a href="../Actions/ReimbursementMaking.aspx"><span>Reimbursement Making</span></a></li>
+                                    </ul>
+                                </li>
+                                <li id="liSalaryMakingMenu" runat="server" class='has-sub'><a href='#'>Salary Menu's »<span class="style_1"></span></a>
+                                    <ul>
+                                        <li id="liSalaryMaking" runat="server" class='has-sub'><a style="width: 100%;" href="../Actions/SalaryMaking.aspx"><span>Monthly Salary Making</span></a></li>
+                                        <li id="liMidMonthIncrementSalaryMaking" runat="server" class='has-sub'><a style="width: 100%;" href="../Actions/MidMonthIncrementSalaryMaking.aspx">
+                                            <span>Mid Month Change Salary Making</span></a></li>
+                                        <li id="liSalaryApproval" runat="server" class='has-sub' style="width: 215px;"><a href="../Actions/SalaryApproval.aspx"><span>Salary Approval</span></a></li>
+                                    </ul>
+                                </li>
+                                <li id="liFNFAndNotice" runat="server" class='has-sub'><a href='#'>FNF & Notice »<span class="style_1"></span></a>
+                                    <ul>
+                                        <li id="liFNFMaking" runat="server" class='has-sub'><a href="../Actions/FNFMaking.aspx"><span>FNF Making</span></a></li>
+                                        <li id="liManageNoticePeriod" runat="server" class='has-sub'><a href="../Actions/ManageNoticePeriod.aspx"><span>Manage Notice Period</span></a></li>
+                                    </ul>
+                                </li>
+                                <li id="liGenerateSalarySlip" runat="server" class='has-sub'><a href="../Actions/GenerateSalarySlip.aspx"><span>Generate Salary Slip</span></a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li id="liReports" runat="server" class='has-sub'><a href='#'>Reports »<span class="style_1"></span></a>
+                            <ul>
+                                <li id="liActionsReports" runat="server" class='has-sub'><a href='#'>Actions Reports »<span class="style_1"></span></a>
+                                    <ul>
+                                        <li id="liProfileMenuReport" runat="server" class='has-sub'><a href='#'>Profile Reports »<span class="style_1"></span></a>
+                                            <ul>
+                                                <li id="liProfileReport" runat="server" class='has-sub'><a href="../Reports/ProfileReport.aspx"><span>Employee Profile Report</span></a></li>
+                                                <li id="liProfileReportHistory" runat="server" class='has-sub'><a href="../Reports/ProfileHistoryReport.aspx"><span>Profile Modification Report</span></a></li>
+                                            </ul>
+                                        </li>
+                                        <li id="liMonthlyReports" runat="server" class='has-sub'><a href='#'>Monthly Reports »<span class="style_1"></span></a>
+                                            <ul>
+                                                <li id="liMonthlySalaryReport" runat="server" class='has-sub'><a href="../Reports/MonthlySalaryReport.aspx"><span>Salary Report</span></a></li>
+                                                <li id="liMonthlyBankTransferReport" runat="server" class='has-sub'><a href="../Reports/MonthlyBankTransferReport.aspx"><span>Bank Transfer Report</span></a></li>
+                                                <li id="liMonthlySalaryCashEmpReport" runat="server" class='has-sub'><a href="../Reports/MonthlySalaryCashEmpReport.aspx"><span>Cash Emp Salary Report</span></a></li>
+                                                <li id="liMonthlySalaryChequeEmpReport" runat="server" class='has-sub'><a href="../Reports/MonthlySalaryChequeEmpReport.aspx"><span>Cheque Emp Salary Report</span></a></li>
+                                                <li id="liMonthlyPFReport" runat="server" class='has-sub'><a href="../Reports/MonthlyPFReport.aspx"><span>PF Report</span></a></li>
+                                                <li id="liMonthlyESIReport" runat="server" class='has-sub'><a href="../Reports/MonthlyESIReport.aspx"><span>ESI Report</span></a></li>
+                                                <li id="liArrearReport" runat="server" class='has-sub'><a href="../Reports/ArrearReport.aspx"><span>Arrear Report</span></a></li>
+                                                <li id="liRecoveryReport" runat="server" class='has-sub'><a href="../Reports/RecoveryReport.aspx"><span>Recovery Report</span></a></li>
+                                                <li id="liMonthlyReimbursementReport" runat="server" class='has-sub'><a href="../Reports/MonthlyReimbursementReport.aspx"><span>Reimbursement Report</span></a></li>
+                                                <li id="limonthlyChallan" runat="server" class='has-sub'><a href="../Reports/MonthlyPFChallan.aspx"><span>Monthly Challan Report</span></a></li>
+                                            </ul>
+                                        </li>
+                                        <li id="liFNFAndNoticeReports" runat="server" class='has-sub'><a href='#'>FNF & Notice Reports »<span class="style_1"></span></a>
+                                            <ul>
+                                                <li id="liFNFReport" runat="server" class='has-sub'><a href="../Reports/FNFReport.aspx"><span>FNF Report</span></a></li>
+                                                <li id="liNoticePeriodReport" runat="server" class='has-sub'><a href="../Reports/NoticePeriodReport.aspx"><span>Notice Period Report</span></a></li>
+                                            </ul>
+                                        </li>
+                                        <li id="liOtherReports" runat="server" class='has-sub'><a href='#'>Other Reports »<span class="style_1"></span></a>
+                                            <ul>
+                                                <li id="liEmpWiseSalaryReport" runat="server" class='has-sub'><a href="../Reports/EmpWiseSalaryReport.aspx"><span>Emp Wise Salary Report</span></a></li>
+                                                <li id="liEmpWiseTDSReport" runat="server" class='has-sub'><a href="../Reports/EmpWiseTDSReport.aspx"><span>Emp Wise TDS Report</span></a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li id="liSetUpReports" runat="server" class='has-sub'><a href='#'>Set Up Reports »<span class="style_1"></span></a>
+                                    <ul>
+                                        <li id="liAllowanceReport" runat="server" class='has-sub'><a href='#'>Allowance Reports »<span class="style_1"></span></a>
+                                            <ul>
+                                                <li id="liDaSetupReport" runat="server" class='has-sub'><a href="../Reports/DaSetupReport.aspx"><span>DA Set Up Report</span></a></li>
+                                                <li id="liHraSetUpReport" runat="server" class='has-sub'><a href="../Reports/HraSetUpReport.aspx"><span>HRA Set Up Report</span></a></li>
+                                                <li id="liMedicalSetupReport" runat="server" class='has-sub'><a href="../Reports/MedicalSetupReport.aspx"><span>Medical Set Up Report</span></a></li>
+                                                <li id="liTransportSetUpReport" runat="server" class='has-sub'><a href="../Reports/TransportSetUpReport.aspx"><span>Transport Set Up Report</span></a></li>
+                                            </ul>
+                                        </li>
+                                        <li id="liDeductionsReports" runat="server" class='has-sub'><a href='#'>Deductions Reports »<span class="style_1"></span></a>
+                                            <ul>
+                                                <li id="liPFSetupReport" runat="server" class='has-sub'><a href="../Reports/PFSetupReport.aspx"><span>PF Set Up Report</span></a></li>
+                                                <li id="liESISetupReport" runat="server" class='has-sub'><a href="../Reports/ESISetupReport.aspx"><span>ESI Set Up Report</span></a></li>
+                                                <%-- <li id="liGISSetupReport" runat="server" class='has-sub'><a href="../Reports/GISSetupReport.aspx"><span>GIS Set Up Report</span></a></li>--%>
+                                                <li id="liTransportRecoverySetUpReport" runat="server" class='has-sub'><a href="../Reports/TransportRecoverySetUpReport.aspx"><span>TPT-REC Set Up Report</span></a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li id="liTDS" runat="server" visible="true" class='has-sub'><a href='#'>TDS »<span class="style_1"></span></a>
+                            <ul>
+                                <li id="liTDSSetUp" runat="server" class='has-sub'><a href='#'>Set Up »<span class="style_1"></span></a>
+                                    <ul>
+                                        <li id="liAccomodationCriteria" runat="server" class='has-sub'><a href="../TDS/AccommodationCriteria.aspx"><span>Accommodation Criteria</span></a></li>
+                                        <li id="liStandardDeduction" runat="server" class='has-sub'><a href="../TDS/StandardDeduction.aspx"><span>Standard Deduction</span></a></li>
+                                        <li id="liIncomeTaxRules" runat="server" class='has-sub'><a href="../TDS/IncomeTaxRules.aspx"><span>Income Tax Rules</span></a></li>
+                                        <li id="liSurchargeRules" runat="server" class='has-sub'><a href="../TDS/SurchargeRules.aspx"><span>Surcharge Rules</span></a></li>
+                                    </ul>
+                                </li>
+                                <li id="liIDFForm" runat="server" class='has-sub'><a href='#'>IDF Form »<span class="style_1"></span></a>
+                                    <ul>
+                                        <li id="liTDSHeader" runat="server" class='has-sub'><a style="width: 100%;" href="../TDS/TDSHeaders.aspx"><span>IDF Headers</span></a></li>
+                                        <li id="liTDSHeaderwiseRules" runat="server" class='has-sub'><a style="width: 100%;" href="../TDS/TDSHeaderwiseRules.aspx"><span>IDF Headerwise Rules</span></a></li>
+                                        <li id="liTDSHeaderwiseFooter" runat="server" class='has-sub'><a style="width: 100%;" href="../TDS/TDSHeaderwiseFooter.aspx"><span>IDF Headerwise Footer</span></a></li>
+                                        <li id="liTDSInvestmentDeclarationForm" runat="server" class='has-sub'><a style="width: 100%;" href="../TDS/TDSInvestmentDeclarationForm.aspx"><span>Investment Declaration Form</span></a></li>
+                                        <li id="liIDFApproval" runat="server" class='has-sub'><a style="width: 100%;" href="../TDS/IDFApproval.aspx"><span>IDF Approval</span></a></li>
+                                        <li id="liIDFDisapproval" runat="server" class='has-sub'><a style="width: 100%;" href="../TDS/IDFDisapproval.aspx"><span>IDF Disapproval</span></a></li>
+                                        <li id="liPendingIDFReport" runat="server" class='has-sub'><a style="width: 100%;" href="../TDS/PendingIDFReport.aspx"><span>Pending IDF Report</span></a></li>
+                                        <li id="liDownloadIDF" runat="server" class='has-sub'><a style="width: 100%;" href="../TDS/DownloadIDF.aspx"><span>Download IDF</span></a></li>
+                                    </ul>
+                                </li>
+                                <li id="liForm16" runat="server" class='has-sub'><a href='#'>Form 16 »<span class="style_1"></span></a>
+                                    <ul>
+                                        <li id="liTDSAdditionalAmountCaption" runat="server" class='has-sub'><a href="../TDS/TDSAdditionalAmountCaption.aspx"><span>Additional Amount Caption</span></a></li>
+                                        <li id="liTDSAdditionalAmount" runat="server" class='has-sub'><a href="../TDS/TDSAdditionalAmount.aspx"><span>Additional Amount</span></a></li>
+                                        <li id="liTDSForm16" runat="server" class='has-sub'><a href="../TDS/TDSForm16.aspx"><span>Form 16</span></a></li>
+                                        <li id="liTDSForm16AllEmp" runat="server" class='has-sub'><a href="../TDS/TDSForm16AllEmp.aspx"><span>Form 16 All Emp</span></a></li>
+                                    </ul>
+                                </li>
+                                <li id="liCalculateTax" runat="server" class='has-sub'><a href="../TDS/CalculateTax.aspx"><span>Calculate Tax</span></a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!--end of Menu-->
+            <!--Starting of body-->
+            <div class="main_3" style="margin-top: -10px">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+            <!--end of body-->
+            <!--Starting of Footer-->
+            <div class="main_4">
+
+                <div class="main4_1">
+                    Copyright 2018 K R Mangalam Group | All Rights Reserved
+                </div>
+                <div class="main4_2">
+                    Design &amp; Developed By :- KRM Technical Team<br />
+                </div>
+            </div>
+            <!--end of Footer-->
+        </div>
+    </form>
+</body>
+</html>
